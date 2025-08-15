@@ -1,6 +1,14 @@
 'use client';
 
-import { Box, Typography, Card, CardContent, Grid } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  useTheme,
+} from '@mui/material';
+import { motion } from 'framer-motion';
 
 interface ExperienceItem {
   company: string;
@@ -40,31 +48,72 @@ const experiences: ExperienceItem[] = [
 ];
 
 export default function Experience() {
+  const theme = useTheme();
+
   return (
-    <Box id="experience" sx={{ padding: 4 }}>
-      <Typography variant="h4" gutterBottom>
+    <Box
+      id="experience"
+      sx={{
+        px: { xs: 2, md: 6 },
+        py: 8,
+        backgroundColor: theme.palette.background.default,
+      }}
+    >
+      <Typography
+        variant="h4"
+        gutterBottom
+        sx={{ textAlign: 'center', mb: 6, color: '#8AE99E', fontWeight: 600 }}
+      >
         Experience
       </Typography>
+
       <Grid container spacing={4}>
-        {experiences.map((experience, index) => (
-          <Grid item xs={12} key={index}>
-            <Card sx={{ backgroundColor: '#f9f9f9', boxShadow: 3 }}>
-              <CardContent>
-                <Typography variant="h6" color="primary">
-                  {experience.role}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {experience.company} | {experience.duration}
-                </Typography>
-                <ul style={{ marginTop: 8, paddingLeft: 16 }}>
-                  {experience.description.map((point, i) => (
-                    <li key={i}>
-                      <Typography variant="body2">{point}</Typography>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+        {experiences.map((exp, index) => (
+          <Grid item xs={12} md={6} key={index}>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <Card
+                sx={{
+                  background: '#121212',
+                  border: '1px solid rgba(138, 233, 158, 0.2)',
+                  boxShadow: '0 0 15px rgba(138, 233, 158, 0.1)',
+                  borderRadius: 3,
+                  height: '100%',
+                }}
+              >
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{ color: '#8AE99E', fontWeight: 600 }}
+                  >
+                    {exp.role}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ color: '#ccc', mb: 1 }}
+                  >
+                    {exp.company} &nbsp; | &nbsp; {exp.duration}
+                  </Typography>
+                  <ul style={{ paddingLeft: '1.25rem', marginTop: 8 }}>
+                    {exp.description.map((point, i) => (
+                      <li key={i}>
+                        <Typography
+                          variant="body2"
+                          sx={{ color: '#ddd', lineHeight: 1.6 }}
+                        >
+                          {point}
+                        </Typography>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
           </Grid>
         ))}
       </Grid>
