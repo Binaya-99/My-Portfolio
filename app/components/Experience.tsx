@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   Grid,
-  useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -19,13 +18,23 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    company: 'Tata Consultancy Services (TCS)',
+    role: 'System Engineer',
+    duration: '02/2025 - Present',
+    description: [
+      'Working on Apple’s internal enterprise ecosystem with a focus on scalable, high-quality systems.',
+      'Collaborating with cross-functional engineering teams to ensure smooth system operations.',
+      'Supporting automation workflows and improving internal processes for better efficiency.',
+    ],
+  },
+  {
     company: 'Smartters Software Pvt. Ltd.',
     role: 'Web Developer',
-    duration: '09/2022 - Present',
+    duration: '09/2022 - 01/2025',
     description: [
       'Developed Binimise, a multi-area waste management system, increasing operational efficiency by 30%.',
-      'Designed and implemented Enfix, an amusement park management system, achieving a 50% increase in positive feedback.',
-      'Led the development of a project management system for AutoCAD designs, improving system performance by 25%.',
+      'Designed and implemented Enfix, an amusement park management system with 50% boosted positive feedback.',
+      'Led development of an AutoCAD project management system with a 25% performance boost.',
     ],
   },
   {
@@ -33,7 +42,7 @@ const experiences: ExperienceItem[] = [
     role: 'Junior Technical Programmer',
     duration: '12/2021 - 08/2022',
     description: [
-      'Built a cloud-based EMR and fertility record system, enhancing clinic operations with scheduling and billing improvements.',
+      'Built cloud-based EMR & fertility management systems with scheduling and billing improvements.',
     ],
   },
   {
@@ -42,27 +51,43 @@ const experiences: ExperienceItem[] = [
     duration: '02/2021 - 04/2021',
     description: [
       'Built interactive and responsive UI components using React.js.',
-      'Collaborated with the design team to implement user-friendly interfaces.',
+      'Collaborated with designers to ship user-friendly interfaces.',
+    ],
+  },
+  {
+    company: "Lecture's Note",
+    role: 'Flutter Developer Intern',
+    duration: '06/2019 - 07/2019',
+    description: [
+      'Developed basic mobile UI components using Flutter & Dart.',
+      'Implemented layouts, navigation, and stateful widgets for demo applications.',
     ],
   },
 ];
 
+
 export default function Experience() {
-  const theme = useTheme();
 
   return (
     <Box
       id="experience"
       sx={{
         px: { xs: 2, md: 6 },
-        py: 8,
-        backgroundColor: theme.palette.background.default,
+        py: 10,
+        backgroundColor: '#000',
       }}
     >
       <Typography
         variant="h4"
         gutterBottom
-        sx={{ textAlign: 'center', mb: 6, color: '#8AE99E', fontWeight: 600 }}
+        sx={{
+          textAlign: 'center',
+          mb: 6,
+          color: '#8AE99E',
+          fontWeight: 700,
+          textShadow: '0 0 12px rgba(138, 233, 158, 0.4)',
+          letterSpacing: '0.5px',
+        }}
       >
         Experience
       </Typography>
@@ -75,36 +100,49 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: '0 0 30px rgba(138, 233, 158, 0.3)',
+              }}
+              style={{ borderRadius: 16 }}
             >
               <Card
                 sx={{
-                  background: '#121212',
-                  border: '1px solid rgba(138, 233, 158, 0.2)',
-                  boxShadow: '0 0 15px rgba(138, 233, 158, 0.1)',
+                  background: 'rgba(255,255,255,0.05)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(138,233,158,0.25)',
                   borderRadius: 3,
                   height: '100%',
+                  padding: '4px',
+                  transition: '0.3s ease',
                 }}
               >
                 <CardContent>
                   <Typography
                     variant="h6"
-                    sx={{ color: '#8AE99E', fontWeight: 600 }}
+                    sx={{
+                      color: '#8AE99E',
+                      fontWeight: 600,
+                      fontSize: '1.15rem',
+                      mb: 0.5,
+                    }}
                   >
                     {exp.role}
                   </Typography>
+
                   <Typography
                     variant="subtitle1"
-                    sx={{ color: '#ccc', mb: 1 }}
+                    sx={{ color: '#ccc', mb: 1.5, fontSize: '0.95rem' }}
                   >
                     {exp.company} &nbsp; | &nbsp; {exp.duration}
                   </Typography>
+
                   <ul style={{ paddingLeft: '1.25rem', marginTop: 8 }}>
                     {exp.description.map((point, i) => (
-                      <li key={i}>
+                      <li key={i} style={{ marginBottom: 6 }}>
                         <Typography
                           variant="body2"
-                          sx={{ color: '#ddd', lineHeight: 1.6 }}
+                          sx={{ color: '#ddd', lineHeight: 1.55 }}
                         >
                           {point}
                         </Typography>
