@@ -3,7 +3,6 @@
 import { Box, Button, Typography, useMediaQuery } from '@mui/material';
 import { motion } from 'framer-motion';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import SpeedIcon from '@mui/icons-material/Speed';
 import FloatingChip from './FloatingChip';
 import { useTheme } from '@mui/material/styles';
