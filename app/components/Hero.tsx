@@ -2,8 +2,7 @@
 
 import { Box, Button, Typography, useMediaQuery } from '@mui/material';
 import { motion } from 'framer-motion';
-import MobileFriendlyIcon from '@mui/icons-material/MobileFriendly';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import SpeedIcon from '@mui/icons-material/Speed';
 import FloatingChip from './FloatingChip';
 import { useTheme } from '@mui/material/styles';
@@ -36,24 +35,17 @@ export default function Hero() {
         <>
           <FloatingChip
             text="Web Development"
-            icon={<MobileFriendlyIcon fontSize="small" />}
+            icon={<LanguageOutlinedIcon fontSize="small" />}
             color="#1EC28B"
             initialX={50}
             initialY={80}
           />
           <FloatingChip
-            text="UI/UX Development"
-            icon={<DesignServicesIcon fontSize="small" />}
-            color="#1D2B53"
-            initialX={200}
-            initialY={300}
-          />
-          <FloatingChip
             text="MVP Development"
             icon={<SpeedIcon fontSize="small" />}
             color="#942C44"
-            initialX={-150}
-            initialY={420}
+            initialX={150}
+            initialY={200}
           />
         </>
       )}
@@ -158,16 +150,17 @@ export default function Hero() {
             <Image
               src="/my-image3.png"
               alt="Profile"
-              fill
+              width={350}
+              height={350}
               priority
-              sizes="(max-width: 600px) 220px,
-               (max-width: 900px) 260px,
-               350px"
               style={{
+                width: '100%',
+                height: '100%',
                 objectFit: 'cover',
               }}
             />
           </Box>
+
         </motion.div>
       </motion.div>
 
