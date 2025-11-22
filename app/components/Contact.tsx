@@ -34,8 +34,7 @@ export default function Contact() {
             maxWidth: 520,
             borderRadius: 4,
             backdropFilter: 'blur(14px)',
-            background:
-              'rgba(255, 255, 255, 0.05)',
+            background: 'rgba(255, 255, 255, 0.05)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             boxShadow:
               '0 8px 25px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.08)',
@@ -57,106 +56,104 @@ export default function Contact() {
             Contact Me
           </Typography>
 
-          <motion.form
-            action="https://formsubmit.co/binaya.ray99@gmail.com"
-            method="POST"
+          {/* ❗ FIXED: Use motion.div, not motion.form */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             style={{ width: '100%' }}
           >
-            {/* Required for FormSubmit */}
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input
-              type="hidden"
-              name="_subject"
-              value="New Portfolio Contact Message!"
-            />
-            <input
-              type="hidden"
-              name="_next"
-              value="/success"
-            />
-            <input
-              type="hidden"
-              name="_error"
-              value="/error"
-            />
+            {/* REAL FORM FOR FORMSUBMIT */}
+            <form
+              action="https://formsubmit.co/binaya.ray99@gmail.com"
+              method="POST"
+              style={{ width: '100%' }}
+            >
+              {/* FormSubmit Settings */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Portfolio Contact Message!"
+              />
+              <input type="hidden" name="_next" value="/success" />
+              <input type="hidden" name="_error" value="/error" />
 
-            {/* INPUT FIELDS */}
-            <TextField
-              label="Name"
-              name="name"
-              fullWidth
-              required
-              variant="outlined"
-              sx={{
-                mb: 3,
-                '& .MuiOutlinedInput-root': {
-                  backgroundColor: 'rgba(255,255,255,0.06)',
-                  borderRadius: 2,
-                },
-              }}
-            />
-
-            <TextField
-              label="Email"
-              name="email"
-              type="email"
-              fullWidth
-              required
-              variant="outlined"
-              sx={{
-                mb: 3,
-                '& .MuiOutlinedInput-root': {
-                  backgroundColor: 'rgba(255,255,255,0.06)',
-                  borderRadius: 2,
-                },
-              }}
-            />
-
-            <TextField
-              label="Message"
-              name="message"
-              fullWidth
-              required
-              multiline
-              rows={4}
-              variant="outlined"
-              sx={{
-                mb: 3,
-                '& .MuiOutlinedInput-root': {
-                  backgroundColor: 'rgba(255,255,255,0.06)',
-                  borderRadius: 2,
-                },
-              }}
-            />
-
-            {/* SUBMIT BUTTON */}
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Button
+              {/* INPUTS */}
+              <TextField
+                label="Name"
+                name="name"
                 fullWidth
-                variant="contained"
-                type="submit"
+                required
+                variant="outlined"
                 sx={{
-                  py: 1.4,
-                  fontSize: '1rem',
-                  borderRadius: 3,
-                  textTransform: 'none',
-                  backgroundColor: '#8AE99E',
-                  color: '#000',
-                  fontWeight: 600,
-                  '&:hover': {
-                    backgroundColor: '#7EE38F',
-                    boxShadow: '0 0 15px rgba(138,233,158,0.5)',
+                  mb: 3,
+                  '& .MuiOutlinedInput-root': {
+                    backgroundColor: 'rgba(255,255,255,0.06)',
+                    borderRadius: 2,
                   },
                 }}
-              >
-                Send Message
-              </Button>
-            </motion.div>
-          </motion.form>
+              />
+
+              <TextField
+                label="Email"
+                name="email"
+                type="email"
+                fullWidth
+                required
+                variant="outlined"
+                sx={{
+                  mb: 3,
+                  '& .MuiOutlinedInput-root': {
+                    backgroundColor: 'rgba(255,255,255,0.06)',
+                    borderRadius: 2,
+                  },
+                }}
+              />
+
+              <TextField
+                label="Message"
+                name="message"
+                fullWidth
+                required
+                multiline
+                rows={4}
+                variant="outlined"
+                sx={{
+                  mb: 3,
+                  '& .MuiOutlinedInput-root': {
+                    backgroundColor: 'rgba(255,255,255,0.06)',
+                    borderRadius: 2,
+                  },
+                }}
+              />
+
+              {/* SUBMIT BUTTON */}
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  type="submit"
+                  sx={{
+                    py: 1.4,
+                    fontSize: '1rem',
+                    borderRadius: 3,
+                    textTransform: 'none',
+                    backgroundColor: '#8AE99E',
+                    color: '#000',
+                    fontWeight: 600,
+                    '&:hover': {
+                      backgroundColor: '#7EE38F',
+                      boxShadow: '0 0 15px rgba(138,233,158,0.5)',
+                    },
+                  }}
+                >
+                  Send Message
+                </Button>
+              </motion.div>
+            </form>
+          </motion.div>
         </Paper>
       </motion.div>
     </Box>
